@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:promad_sora/common/common.dart';
+import 'package:promad_sora/routes/page_route.dart';
 import 'package:promad_sora/screen/bottom/bottom.dart';
 
 class IntroScreen extends StatefulWidget {
@@ -139,7 +140,9 @@ class IntroScreenState extends State<IntroScreen> {
       renderSkipBtn: renderSkipBtn(),
       onSkipPress: () => {
         Navigator.push(
-            context, MaterialPageRoute(builder: (_) => const Bottom()))
+          context,
+          CustomPageRoute(child: const Bottom()),
+        )
       },
 
       renderNextBtn: renderNextBtn(),
@@ -147,7 +150,9 @@ class IntroScreenState extends State<IntroScreen> {
       renderDoneBtn: renderDoneBtn(),
       onDonePress: () => {
         Navigator.push(
-            context, MaterialPageRoute(builder: (_) => const Bottom()))
+          context,
+          CustomPageRoute(child: const Bottom()),
+        )
       },
 
       indicatorConfig: IndicatorConfig(
