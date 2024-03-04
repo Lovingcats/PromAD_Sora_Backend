@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:promad_sora/common/common.dart';
 import 'package:promad_sora/provider/user_provider.dart';
 import 'package:promad_sora/screen/introslider/introslider.dart';
 import 'package:promad_sora/widget/introslider.dart';
@@ -8,6 +9,9 @@ import 'package:intro_slider/intro_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: backgroundColor,
+      systemNavigationBarColor: backgroundColor));
   runApp(const MyApp());
 }
 
