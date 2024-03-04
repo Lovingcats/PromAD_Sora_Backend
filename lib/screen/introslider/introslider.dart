@@ -22,18 +22,16 @@ class IntroScreenState extends State<IntroScreen> {
 
     listContentConfig.add(
       ContentConfig(
-        title: "사진을 아트그래픽으로 바꾸기",
+        title: "Maplestory Mang Game",
         styleTitle: TextStyle(
-          color: Colors.white,
-          fontSize: 25.sp,
-          fontWeight: FontWeight.bold,
-        ),
+            color: Colors.white,
+            fontSize: 25.sp,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Nexa_Bold'),
         marginTitle: EdgeInsets.only(top: 480.h),
-        description: "아 출근하기 싫다 아 출근하기 싫다 아 출근하기 싫다",
+        description: "SSIBAL JEOT MANG GAME FUCK YOU",
         styleDescription: TextStyle(
-          color: Colors.white,
-          fontSize: 13.sp,
-        ),
+            color: Colors.white, fontSize: 13.sp, fontFamily: 'Nexa_Regular'),
         marginDescription: EdgeInsets.only(
           left: 20.w,
           right: 20.w,
@@ -45,44 +43,52 @@ class IntroScreenState extends State<IntroScreen> {
       ),
     );
     listContentConfig.add(
-      const ContentConfig(
-        title: "CITY",
+      ContentConfig(
+        title: "Flutter best Flutter good",
         styleTitle: TextStyle(
-          color: Color(0xff7FFFD4),
-          fontSize: 30.0,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'RobotoMono',
+          color: const Color(0xff7FFFD4),
+          fontSize: 25.sp,
+          fontFamily: 'Nexa_Bold',
         ),
-        description:
-            "Ye indulgence unreserved connection alteration appearance",
+        marginTitle: EdgeInsets.only(top: 480.h),
+        description: "wow! crossplatform framework. amazing",
         styleDescription: TextStyle(
-          color: Color(0xff7FFFD4),
-          fontSize: 20.0,
-          fontStyle: FontStyle.italic,
-          fontFamily: 'Raleway',
+          color: const Color(0xff7FFFD4),
+          fontSize: 13.sp,
+          fontFamily: 'Nexa_Regular',
         ),
-        colorBegin: Color(0xff89D4CF),
-        colorEnd: Color(0xff734AE8),
+        marginDescription: EdgeInsets.only(
+          left: 20.w,
+          right: 20.w,
+          top: 5.h,
+          bottom: 10.h,
+        ),
+        colorBegin: const Color(0xff89D4CF),
+        colorEnd: const Color(0xff734AE8),
         directionColorBegin: Alignment.topRight,
         directionColorEnd: Alignment.bottomLeft,
       ),
     );
     listContentConfig.add(
-      const ContentConfig(
-        title: "BEACH",
+      ContentConfig(
+        title: "Debi Marlene",
         styleTitle: TextStyle(
-          color: Color(0xffFFDAB9),
-          fontSize: 30.0,
-          fontWeight: FontWeight.bold,
-          fontFamily: 'RobotoMono',
+          color: const Color(0xffFFDAB9),
+          fontSize: 25.sp,
+          fontFamily: 'Nexa_Bold',
         ),
-        description:
-            "Much evil soon high in hope do view. Out may few northward believing attempted. Yet timed being songs marry one defer men our. Although finished blessing do of",
+        marginTitle: EdgeInsets.only(top: 480.h),
+        description: "Black survival is very good game..!",
         styleDescription: TextStyle(
-          color: Color(0xffFFDAB9),
-          fontSize: 20.0,
-          fontStyle: FontStyle.italic,
-          fontFamily: 'Raleway',
+          color: const Color(0xffFFDAB9),
+          fontSize: 13.sp,
+          fontFamily: 'Nexa_Regular',
+        ),
+        marginDescription: EdgeInsets.only(
+          left: 20.w,
+          right: 20.w,
+          top: 5.h,
+          bottom: 10.h,
         ),
         maxLineTextDescription: 3,
       ),
@@ -173,7 +179,7 @@ class IntroScreenState extends State<IntroScreen> {
           top: MediaQuery.of(context).viewPadding.top > 0 ? 20 : 10,
           bottom: MediaQuery.of(context).viewPadding.bottom > 0 ? 20 : 10,
         ),
-        backgroundColor: backgroundColor,
+        backgroundColor: Colors.transparent,
       ),
 
       curveScroll: Curves.bounceIn,
