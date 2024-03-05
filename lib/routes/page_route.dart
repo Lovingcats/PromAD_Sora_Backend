@@ -8,6 +8,7 @@ class CustomPageRoute<T> extends PageRouteBuilder<T> {
     required this.child,
     this.duration = const Duration(milliseconds: 200),
   }) : super(
+          opaque: false,
           pageBuilder: (
             BuildContext context,
             Animation<double> animation,
