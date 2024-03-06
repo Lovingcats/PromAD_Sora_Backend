@@ -33,13 +33,13 @@ flutter:
   fonts:
     - family: Nexa_Regular
       fonts:
-        - asset: assets/fonts/Nexa-Trial-Regular.otf
+        - asset: assets/font/Nexa-Trial-Regular.otf
     - family: Nexa_Heavy
       fonts:
-        - asset: assets/fonts/Nexa-Trial-Heavy.otf
+        - asset: assets/font/Nexa-Trial-Heavy.otf
     - family: Nexa_Bold
       fonts:
-        - asset: assets/fonts/Nexa-Trial-Bold.otf
+        - asset: assets/font/Nexa-Trial-Bold.otf
     - family: Nexa_Light
       fonts:
-        - asset: assets/fonts/Nexa-Trial-Light.otf
+        - asset: assets/font/Nexa-Trial-Light.otf
