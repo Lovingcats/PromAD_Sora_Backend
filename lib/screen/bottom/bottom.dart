@@ -35,60 +35,29 @@ class _HomePageState extends State<Bottom> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        DefaultTabController(
-            length: 3,
-            child: Scaffold(
-              backgroundColor: backgroundColor,
-              appBar: null,
-              extendBody: true,
-              bottomNavigationBar: bottombar(),
-              body: SafeArea(
-                child: Stack(
-                  children: [
-                    PageView(
-                      controller: controller,
-                      physics: const NeverScrollableScrollPhysics(),
-                      onPageChanged: ((value) {
-                        if (value == 0) {
-                          setState(() {
-                            selected = 0;
-                          });
-                        } else if (value == 1) {
-                          setState(() {
-                            selected = 1;
-                          });
-                        } else if (value == 2) {
-                          setState(() {
-                            selected = 2;
-                          });
-                        } else {
-                          setState(() {
-                            selected = 3;
-                          });
-                        }
-                      }),
-                      children: [
-                        AnimatedOpacity(
-                            duration: const Duration(milliseconds: 10000),
-                            opacity: selected == 0 ? 1 : 0,
-                            child: Home()),
-                        AnimatedOpacity(
-                            duration: const Duration(milliseconds: 10000),
-                            opacity: selected == 1 ? 1 : 0,
-                            child: Menu()),
-                        AnimatedOpacity(
-                            duration: const Duration(milliseconds: 10000),
-                            opacity: selected == 2 ? 1 : 0,
-                            child: Profile()),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            )),
-      ],
+    return Scaffold(
+      backgroundColor: backgroundColor,
+      appBar: null,
+      extendBody: true,
+      bottomNavigationBar: bottombar(),
+      body: SafeArea(
+        child: Stack(
+          children: [
+                AnimatedOpacity(
+                    duration: const Duration(milliseconds: 450),
+                    opacity: selected == 0 ? 1 : 0,
+                    child: const Home()),
+                AnimatedOpacity(
+                    duration: const Duration(milliseconds: 450),
+                    opacity: selected == 1 ? 1 : 0,
+                    child: const Menu()),
+                AnimatedOpacity(
+                    duration: const Duration(milliseconds: 450),
+                    opacity: selected == 2 ? 1 : 0,
+                    child: const Profile()),
+          ],
+        ),
+      ),
     );
   }
 
@@ -229,10 +198,10 @@ class _HomePageState extends State<Bottom> {
           currentIndex: selected ?? 0,
           hasNotch: true,
           onTap: (index) {
-            controller.jumpToPage(index);
             setState(() {
               selected = index;
             });
+            print(selected);
           },
         ),
       ),
