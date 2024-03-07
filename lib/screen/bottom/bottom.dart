@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
-import 'package:promad_sora/screen/bottom/home.dart';
+import 'package:promad_sora/screen/bottom/home/home.dart';
 import 'package:promad_sora/screen/bottom/menu.dart';
 import 'package:promad_sora/screen/bottom/profile.dart';
 import 'package:stylish_bottom_bar/model/bar_items.dart';
@@ -17,21 +17,7 @@ class Bottom extends StatefulWidget {
 }
 
 class _HomePageState extends State<Bottom> {
-  final TextEditingController _searchController = TextEditingController();
-  dynamic selected = 0;
-  var heart = false;
-  PageController controller = PageController();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  int selected = 0; // 초기 선택된 탭 인덱스
 
   @override
   Widget build(BuildContext context) {
@@ -43,20 +29,22 @@ class _HomePageState extends State<Bottom> {
       body: SafeArea(
         child: Stack(
           children: [
-                AnimatedOpacity(
-                    duration: const Duration(milliseconds: 450),
-                    opacity: selected == 0 ? 1 : 0,
-                    child: const Home()),
-                AnimatedOpacity(
-                    duration: const Duration(milliseconds: 450),
-                    opacity: selected == 1 ? 1 : 0,
-                    child: const Menu()),
-                AnimatedOpacity(
-                    duration: const Duration(milliseconds: 450),
-                    opacity: selected == 2 ? 1 : 0,
-                    child: const Profile()),
+            pageView(const Home(), 0),
+            pageView(const Menu(), 1),
+            pageView(const Profile(), 2),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget pageView(Widget child, int index) {
+    return AnimatedOpacity(
+      duration: const Duration(milliseconds: 450),
+      opacity: selected == index ? 1 : 0,
+      child: IgnorePointer(
+        ignoring: selected != index,
+        child: child,
       ),
     );
   }
@@ -195,13 +183,12 @@ class _HomePageState extends State<Bottom> {
             iconStyle: IconStyle.Default,
             opacity: 0.3,
           ),
-          currentIndex: selected ?? 0,
+          currentIndex: selected,
           hasNotch: true,
           onTap: (index) {
             setState(() {
               selected = index;
             });
-            print(selected);
           },
         ),
       ),
