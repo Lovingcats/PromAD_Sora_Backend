@@ -28,9 +28,15 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/img/cat1.jpeg
+    - assets/img/cat2.jpeg
+    - assets/img/cat3.jpeg
+    - assets/img/cat4.jpeg
+    - assets/img/cat5.jpeg
+    - assets/img/cat6.jpeg
+    - assets/img/cat7.jpeg
+    - assets/img/cat8.jpeg
 
   fonts:
     - family: Nexa_Regular
