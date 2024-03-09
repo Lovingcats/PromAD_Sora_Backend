@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
+import 'package:promad_sora/model/videostyle_model.dart';
+import 'package:promad_sora/widgets/selectstyle_slider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -230,54 +231,13 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
+              Padding(
+                  padding: EdgeInsets.only(top: 20.h),
+                  child: const SelectVideoStyleSlider())
             ]),
           ),
         ),
       ),
     );
   }
-}
-
-Widget selectStyleSlider() {
-  return SingleChildScrollView(
-    scrollDirection: Axis.horizontal,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [],
-    ),
-  );
-}
-
-List<Widget> makeStudyPaper(BuildContext context) {
-  List<Widget> results = [];
-  List<String> styleName = [
-    "조용제",
-    "김준서",
-    "이경신",
-    "이동호",
-    "황우석",
-    "이주형",
-    "박창은",
-    "정현우"
-  ];
-  for (var i = 0; i < styleName.length; i++) {
-    results.add(GestureDetector(
-      onTap: () {},
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
-            child: Image.asset(
-              "assets/img/cat$i.jpeg",
-              height: 130.h,
-              width: 130.w,
-            ),
-          ),
-        ],
-      ),
-    ));
-  }
-  return results;
 }
