@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late FocusNode _focusNode;
   TextEditingController _promptController = TextEditingController();
-  Color _borderColor = const Color.fromARGB(255, 92, 91, 91);
+  Color _borderColor = backSubColor1;
   var promtHeight = 150.h;
 
   @override
@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
       } else {
         // 포커스를 잃으면 초기 색상으로 복원
         setState(() {
-          _borderColor = const Color.fromARGB(255, 92, 91, 91);
+          _borderColor = backSubColor1;
         });
       }
     });
@@ -63,96 +63,221 @@ class _HomeState extends State<Home> {
       },
       child: Scaffold(
         backgroundColor: backgroundColor,
-        body: Center(
-          child: Column(children: [
-            Padding(
-              padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 30.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GradientText(
-                    'PromAD',
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                    ),
-                    colors: const [
-                      Color.fromARGB(255, 186, 255, 217),
-                      Color.fromARGB(255, 150, 255, 255),
-                      Color(0xFF00FFFF),
-                    ],
-                  ),
-                  Icon(
-                    CupertinoIcons.money_dollar_circle,
-                    size: 30.h,
-                    color: Colors.white,
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 25.w, top: 30.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  FaIcon(
-                    FontAwesomeIcons.penNib,
-                    color: Colors.white,
-                    size: 20.h,
-                  ),
-                  SizedBox(
-                    width: 8.w,
-                  ),
-                  Text(
-                    "Enter a description.",
-                    style: TextStyle(
-                        fontSize: 15.sp,
-                        color: Colors.white,
-                        fontFamily: 'Nexa_Regular'),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 15.h),
-              child: Container(
-                padding: EdgeInsets.only(left: 12.w, right: 12.w, bottom: 12.h),
-                width: double.infinity,
-                height: promtHeight,
-                decoration: BoxDecoration(
-                    color: backgroundColor,
-                    borderRadius: BorderRadius.circular(25.r),
-                    border: Border.all(color: _borderColor, width: 1.5.w)),
-                child: Column(
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(children: [
+              Padding(
+                padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 30.h),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    TextField(
-                      focusNode: _focusNode,
-                      controller: _promptController,
-                      cursorColor: const Color.fromARGB(194, 96, 194, 130),
+                    GradientText(
+                      'PromAD',
                       style: TextStyle(
-                          fontSize: 16.sp,
-                          color: Colors.white,
-                          fontFamily: 'Nexa_Regular'),
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "What do you want to create ?",
-                        hintStyle: TextStyle(
-                            color: const Color.fromARGB(255, 92, 91, 91),
-                            fontSize: 16.sp,
-                            fontFamily: 'Nexa_Regular'),
+                        fontSize: 20.sp,
                       ),
-                      maxLines: null,
-                      onChanged: (text) {
-                        _updateHeight(text);
-                      },
+                      colors: const [
+                        Color.fromARGB(255, 186, 255, 217),
+                        Color.fromARGB(255, 150, 255, 255),
+                        Color(0xFF00FFFF),
+                      ],
+                    ),
+                    Icon(
+                      CupertinoIcons.money_dollar_circle,
+                      size: 30.h,
+                      color: Colors.white,
                     )
                   ],
                 ),
               ),
-            )
-          ]),
+              Padding(
+                padding: EdgeInsets.only(left: 25.w, top: 30.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    FaIcon(
+                      FontAwesomeIcons.penNib,
+                      color: Colors.white,
+                      size: 20.h,
+                    ),
+                    SizedBox(
+                      width: 8.w,
+                    ),
+                    Text(
+                      "Enter a description.",
+                      style: TextStyle(
+                          fontSize: 18.sp,
+                          color: Colors.white,
+                          fontFamily: 'Nexa_Regular'),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 15.h),
+                child: Container(
+                  padding:
+                      EdgeInsets.only(left: 12.w, right: 12.w, bottom: 12.h),
+                  width: double.infinity,
+                  height: promtHeight,
+                  decoration: BoxDecoration(
+                      color: backgroundColor,
+                      borderRadius: BorderRadius.circular(25.r),
+                      border: Border.all(color: _borderColor, width: 1.5.w)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextField(
+                        focusNode: _focusNode,
+                        controller: _promptController,
+                        cursorColor: const Color.fromARGB(194, 96, 194, 130),
+                        style: TextStyle(
+                            fontSize: 16.sp,
+                            color: Colors.white,
+                            fontFamily: 'Nexa_Regular'),
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "What do you want to create ?",
+                          hintStyle: TextStyle(
+                              color: backSubColor1,
+                              fontSize: 16.sp,
+                              fontFamily: 'Nexa_Regular'),
+                        ),
+                        maxLines: null,
+                        onChanged: (text) {
+                          _updateHeight(text);
+                        },
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            "(${_promptController.text.length}/1000)",
+                            style: TextStyle(
+                                fontSize: 12.sp,
+                                color: backSubColor1,
+                                fontFamily: "Rexa_Light"),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _promptController.clear();
+                                _focusNode.unfocus();
+                              });
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(left: 9.w),
+                              height: 30.h,
+                              width: 23.w,
+                              decoration: const BoxDecoration(
+                                  color: backSubColor2, shape: BoxShape.circle),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  FaIcon(
+                                    FontAwesomeIcons.xmark,
+                                    color: backSubColor1,
+                                    size: 17.h,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 30.h, left: 25.w, right: 25.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Select Style",
+                      style: TextStyle(
+                          fontSize: 18.sp,
+                          color: Colors.white,
+                          fontFamily: "Nexa_Regular"),
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "See All",
+                            style: TextStyle(
+                                fontSize: 15.sp,
+                                color: backSubColor1,
+                                fontFamily: "Nexa_Regular"),
+                          ),
+                          SizedBox(
+                            width: 3.w,
+                          ),
+                          FaIcon(
+                            FontAwesomeIcons.anglesRight,
+                            color: backSubColor1,
+                            size: 18.h,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ]),
+          ),
         ),
       ),
     );
   }
+}
+
+Widget selectStyleSlider() {
+  return SingleChildScrollView(
+    scrollDirection: Axis.horizontal,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [],
+    ),
+  );
+}
+
+List<Widget> makeStudyPaper(BuildContext context) {
+  List<Widget> results = [];
+  List<String> styleName = [
+    "조용제",
+    "김준서",
+    "이경신",
+    "이동호",
+    "황우석",
+    "이주형",
+    "박창은",
+    "정현우"
+  ];
+  for (var i = 0; i < styleName.length; i++) {
+    results.add(GestureDetector(
+      onTap: () {},
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.asset(
+              "assets/img/cat$i.jpeg",
+              height: 130.h,
+              width: 130.w,
+            ),
+          ),
+        ],
+      ),
+    ));
+  }
+  return results;
 }
