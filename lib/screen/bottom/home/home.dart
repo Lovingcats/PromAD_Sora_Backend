@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
 import 'package:promad_sora/model/videostyle_model.dart';
+import 'package:promad_sora/routes/page_route.dart';
+import 'package:promad_sora/screen/login.dart';
+import 'package:promad_sora/widgets/selectsize_slider.dart';
 import 'package:promad_sora/widgets/selectstyle_slider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -40,15 +44,6 @@ class _HomeState extends State<Home> {
     });
   }
 
-  void _updateHeight(String text) {
-    // 텍스트의 줄 수를 기반으로 높이를 계산합니다.
-    final lines = '\n'.allMatches(text).length + 1;
-    final newHeight = 150.h + (lines * 20.h); // 기본 높이 + 추가 높이
-    setState(() {
-      promtHeight = newHeight;
-    });
-  }
-
   @override
   void dispose() {
     _focusNode.dispose();
@@ -68,7 +63,7 @@ class _HomeState extends State<Home> {
           child: Center(
             child: Column(children: [
               Padding(
-                padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 30.h),
+                padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 10.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -145,9 +140,7 @@ class _HomeState extends State<Home> {
                               fontFamily: 'Nexa_Regular'),
                         ),
                         maxLines: null,
-                        onChanged: (text) {
-                          _updateHeight(text);
-                        },
+                        onChanged: (text) {},
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -233,7 +226,62 @@ class _HomeState extends State<Home> {
               ),
               Padding(
                   padding: EdgeInsets.only(top: 20.h),
-                  child: const SelectVideoStyleSlider())
+                  child: const SelectVideoStyleSlider()),
+              Padding(
+                padding: EdgeInsets.only(top: 30.h, left: 25.w, right: 25.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Video Size",
+                      style: TextStyle(
+                          fontSize: 18.sp,
+                          color: Colors.white,
+                          fontFamily: "Nexa_Regular"),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                  padding: EdgeInsets.only(
+                      left: 25.w, right: 25.w, top: 20.h, bottom: 30.h),
+                  child: const SelectVideoSizeSlider()),
+              Padding(
+                padding: EdgeInsets.only(left: 25.w, right: 25.w),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      CustomPageRoute(child: const Login()),
+                    );
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 50.h,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [
+                          Color.fromARGB(255, 186, 255, 217),
+                          Color.fromARGB(255, 150, 255, 255),
+                          Color(0xFF00FFFF),
+                        ],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                      ),
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Create",
+                      style: TextStyle(
+                        fontSize: 20.sp,
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        fontFamily: 'Nexa_Regular',
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ]),
           ),
         ),
