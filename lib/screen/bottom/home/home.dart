@@ -275,7 +275,7 @@ class _HomeState extends State<Home> {
                       "Create",
                       style: TextStyle(
                         fontSize: 20.sp,
-                        color: const Color.fromARGB(255, 255, 255, 255),
+                        color: const Color(0xff555555),
                         fontFamily: 'Nexa_Regular',
                       ),
                     ),
