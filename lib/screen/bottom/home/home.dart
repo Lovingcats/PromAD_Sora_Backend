@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
-import 'package:promad_sora/model/videostyle_model.dart';
 import 'package:promad_sora/routes/page_route.dart';
+import 'package:promad_sora/screen/bottom/home/see_all_style.dart';
 import 'package:promad_sora/screen/login.dart';
 import 'package:promad_sora/widgets/selectsize_slider.dart';
 import 'package:promad_sora/widgets/selectstyle_slider.dart';
@@ -70,8 +69,7 @@ class _HomeState extends State<Home> {
                     GradientText(
                       'PromAD',
                       style: TextStyle(
-                        fontSize: 20.sp,
-                      ),
+                          fontSize: 20.sp, fontFamily: "Nexa_Regular"),
                       colors: const [
                         Color.fromARGB(255, 186, 255, 217),
                         Color.fromARGB(255, 150, 255, 255),
@@ -198,7 +196,12 @@ class _HomeState extends State<Home> {
                           fontFamily: "Nexa_Regular"),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          CustomPageRoute(child: const SeeAllStyle()),
+                        );
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
