@@ -15,22 +15,26 @@ class Login extends StatelessWidget {
         children: [
           backgroundImage(),
           blackBackground(),
-          Padding(
-            padding: EdgeInsets.only(left: 25.w, top: 30.h),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: const Icon(
-                Icons.arrow_back_ios,
-                color: Colors.white,
-              ),
-            ),
-          ),
+          backBtn(context),
           loginButtons(),
           welcomeText(),
         ],
       )),
+    );
+  }
+
+  Padding backBtn(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 25.w, top: 30.h),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: const Icon(
+          Icons.arrow_back_ios,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 
