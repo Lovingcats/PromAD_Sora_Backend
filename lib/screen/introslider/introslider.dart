@@ -23,14 +23,14 @@ class IntroScreenState extends State<IntroScreen> {
 
     listContentConfig.add(
       ContentConfig(
-        title: "Maplestory Mang Game",
+        title: "We Make PromAD",
         styleTitle: TextStyle(
             color: Colors.white,
             fontSize: 25.sp,
             fontWeight: FontWeight.bold,
             fontFamily: 'Nexa_Bold'),
         marginTitle: EdgeInsets.only(top: 480.h),
-        description: "SSIBAL JEOT MANG GAME FUCK YOU",
+        description: "hello mr my yesterday cat likes churu",
         styleDescription: TextStyle(
             color: Colors.white, fontSize: 13.sp, fontFamily: 'Nexa_Regular'),
         marginDescription: EdgeInsets.only(
