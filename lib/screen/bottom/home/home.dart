@@ -1,3 +1,4 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,11 +23,14 @@ class _HomeState extends State<Home> {
   TextEditingController _promptController = TextEditingController();
   Color _borderColor = backSubColor1;
   var promtHeight = 150.h;
+  int _lastLineBreakCount = 0;
+  int lineBreakCount = 0;
 
   @override
   void initState() {
     super.initState();
     _promptController = TextEditingController();
+    _promptController.addListener(_onTextChanged);
     _focusNode = FocusNode();
     _focusNode.addListener(() {
       if (_focusNode.hasFocus) {
@@ -47,8 +51,36 @@ class _HomeState extends State<Home> {
   void dispose() {
     _focusNode.dispose();
     _promptController.dispose();
+    _promptController.removeListener(_onTextChanged);
     super.dispose();
   }
+
+  void _onTextChanged() {
+    final currentText = _promptController.text;
+    final currentLineBreakCount = '\n'.allMatches(currentText).length;
+
+    if (currentLineBreakCount > _lastLineBreakCount) {
+      // 줄바꿈이 추가됨
+      setState(() {
+        lineBreakCount++;
+        if(lineBreakCount > 2){
+          promtHeight += 25.h;
+        }
+      });
+      
+    } else if (currentLineBreakCount < _lastLineBreakCount) {
+      // 줄바꿈이 삭제됨
+      setState(() {
+        lineBreakCount--;
+        if(lineBreakCount > 1){
+          promtHeight -= 25.h;
+        }
+      });
+    }
+
+    _lastLineBreakCount = currentLineBreakCount;
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +170,10 @@ class _HomeState extends State<Home> {
                               fontFamily: 'Nexa_Regular'),
                         ),
                         maxLines: null,
-                        onChanged: (text) {},
+                        textInputAction: TextInputAction.newline,
+                        onChanged: (text) {
+                          
+                        },
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
