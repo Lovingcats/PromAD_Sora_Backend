@@ -41,6 +41,7 @@ flutter:
     - assets/img/google.png
     - assets/img/twitter.png
     - assets/img/loginbackground.jpeg
+    - assets/img/tool1.png
 
   fonts:
     - family: Nexa_Regular
