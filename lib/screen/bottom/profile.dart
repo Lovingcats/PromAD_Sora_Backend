@@ -157,7 +157,7 @@ class _ProfileState extends State<Profile> {
 
   Padding profileImage() {
     return Padding(
-      padding: EdgeInsets.only(top: 10.h),
+      padding: EdgeInsets.only(top: 40.h),
       child: SizedBox(
         height: 125.h,
         width: 125.w,
