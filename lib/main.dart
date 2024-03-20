@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:promad_sora/common/common.dart';
+import 'package:promad_sora/provider/style_provider.dart';
 import 'package:promad_sora/provider/user_provider.dart';
 import 'package:promad_sora/screen/introslider/introslider.dart';
 import 'package:provider/provider.dart';
-import 'package:intro_slider/intro_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
@@ -25,10 +25,10 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: UserProvider()),
+        ChangeNotifierProvider.value(value: StyleProvider()),
       ],
       child: ScreenUtilInit(
-        //screenutil 라이브러리 (뒤에 .h, .w00, .r, .sp등등 크기를 반응형으로 만들어줌)
-        designSize: const Size(360, 800), // 어떤 사이즈를 기준으로 만들것인가
+        designSize: const Size(360, 800),
         builder: (BuildContext context, Widget? child) => const MaterialApp(
             title: 'PromAD_sora',
             debugShowCheckedModeBanner: false,
