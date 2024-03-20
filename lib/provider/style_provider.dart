@@ -8,7 +8,7 @@ class StyleProvider extends ChangeNotifier {
   List<SelectVideoStyleModel> get selectVideoStyleModel =>
       _selectVideoStyleModel;
 
-  void addlist(String styleName, String imageUrl, bool isSelected) {
+  void addList(String styleName, String imageUrl, bool isSelected) {
     selectVideoStyleModel
         .add(SelectVideoStyleModel(styleName, imageUrl, isSelected));
     notifyListeners();
