@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
+import 'package:promad_sora/routes/page_route.dart';
+import 'package:promad_sora/screen/loading.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
 
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +23,7 @@ class Login extends StatelessWidget {
           backgroundImage(),
           blackBackground(),
           backBtn(context),
-          loginButtons(),
+          loginButtons(context),
           welcomeText(),
         ],
       )),
@@ -88,18 +95,18 @@ class Login extends StatelessWidget {
   }
 }
 
-Widget loginButtons() {
+Widget loginButtons(context) {
   return Padding(
     padding: EdgeInsets.only(left: 25.w, right: 25.w, top: 325.h),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: makeLoginButtons(),
+      children: makeLoginButtons(context),
     ),
   );
 }
 
-List<Widget> makeLoginButtons() {
+List<Widget> makeLoginButtons(context) {
   List<String> buttonsUrl = [
     "assets/img/google.png",
     "assets/img/facebook.png",
@@ -110,8 +117,16 @@ List<Widget> makeLoginButtons() {
   for (int i = 0; i < 3; i++) {
     results.add(Padding(
       padding: EdgeInsets.only(bottom: i == 1 ? 20.h : 15.h),
-      child: Image.asset(
-        buttonsUrl[i],
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            CustomPageRoute(child: const Loading()),
+          );
+        },
+        child: Image.asset(
+          buttonsUrl[i],
+        ),
       ),
     ));
   }
