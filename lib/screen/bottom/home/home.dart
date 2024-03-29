@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
 import 'package:promad_sora/routes/page_route.dart';
 import 'package:promad_sora/screen/bottom/home/see_all_style.dart';
 import 'package:promad_sora/screen/login.dart';
+import 'package:promad_sora/screen/purchase.dart';
 import 'package:promad_sora/widgets/selectsize_slider.dart';
 import 'package:promad_sora/widgets/selectstyle_slider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -342,10 +344,18 @@ class _HomeState extends State<Home> {
               Color(0xFF00FFFF),
             ],
           ),
-          Icon(
-            CupertinoIcons.money_dollar_circle,
-            size: 30.h,
-            color: Colors.white,
+          GestureDetector(
+            onTap: (){
+              Navigator.push(
+                context,
+                CustomPageRoute(child: const PurChase()),
+              );
+            },
+            child: Icon(
+              CupertinoIcons.money_dollar_circle,
+              size: 30.h,
+              color: Colors.white,
+            ),
           )
         ],
       ),

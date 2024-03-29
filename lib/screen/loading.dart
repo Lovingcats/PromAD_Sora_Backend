@@ -7,7 +7,6 @@ import 'package:lottie/lottie.dart';
 import 'package:promad_sora/common/common.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/routes/page_route.dart';
-import 'package:promad_sora/screen/bottom/bottom.dart';
 import 'package:promad_sora/screen/videesuccess.dart';
 
 class Loading extends StatefulWidget {
