@@ -52,10 +52,13 @@ class _SelectVideoStyleSliderState extends State<SelectVideoStyleSlider> {
         "sketch",
       ];
       var styleProvider = Provider.of<StyleProvider>(context, listen: false);
-      for (int i = 0; i < imageName.length; i++) {
-        styleProvider.addList(
-            styleName[i], "assets/img/${imageName[i]}.png", i == 0 ? true : false);
+      if(styleProvider.selectVideoStyleModel.isEmpty){
+        for (int i = 0; i < imageName.length; i++) {
+          styleProvider.addList(
+              styleName[i], "assets/img/${imageName[i]}.png", i == 0 ? true : false);
+        }
       }
+      
     });
 
     super.initState();
