@@ -15,29 +15,46 @@ class SelectVideoStyleSlider extends StatefulWidget {
 class _SelectVideoStyleSliderState extends State<SelectVideoStyleSlider> {
   @override
   void initState() {
-    print("실행");
     WidgetsBinding.instance.addPostFrameCallback((_) {
       List<String> styleName = [
-        "Cute",
-        "Pretty",
-        "Beautiful",
-        "2d Anime",
-        "Fashion",
-        "Fantasy",
         "3d Anime",
-        "Sketch",
+        "2d Anime",
+        "Beautiful",
+        "Comic Book",
+        "Cute",
+        "Fantasy",
+        "Fashion",
+        "illustration",
         "Makoto Shinkai",
-        "Pixel Art",
         "Minecraft",
         "Neon",
-        "Comic Book",
         "Painting",
+        "Pixel Art",
+        "Pretty",
+        "Sketch",
+      ];
+
+      List<String> imageName = [
+        "2dAnime",
+        "3dAnime",
+        "beautiful",
+        "comicbook",
+        "cute",
+        "fantasy",
+        "fashion",
         "illustration",
+        "makotoShinkai",
+        "mincraft",
+        "neon",
+        "painting",
+        "pixcelArt",
+        "pretty"
+        "sketch",
       ];
       var styleProvider = Provider.of<StyleProvider>(context, listen: false);
       for (int i = 0; i < 8; i++) {
         styleProvider.addList(
-            styleName[i], "assets/img/cat${i + 1}.jpeg", i == 0 ? true : false);
+            styleName[i], "assets/img/${imageName[i]}.jpeg", i == 0 ? true : false);
       }
     });
 
