@@ -17,8 +17,8 @@ class _SelectVideoStyleSliderState extends State<SelectVideoStyleSlider> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       List<String> styleName = [
-        "3d Anime",
         "2d Anime",
+        "3d Anime",
         "Beautiful",
         "Comic Book",
         "Cute",
@@ -44,15 +44,15 @@ class _SelectVideoStyleSliderState extends State<SelectVideoStyleSlider> {
         "fashion",
         "illustration",
         "makotoShinkai",
-        "mincraft",
+        "minecraft",
         "neon",
         "painting",
         "pixcelArt",
-        "pretty"
+        "pretty",
         "sketch",
       ];
       var styleProvider = Provider.of<StyleProvider>(context, listen: false);
-      for (int i = 0; i < 8; i++) {
+      for (int i = 0; i < imageName.length; i++) {
         styleProvider.addList(
             styleName[i], "assets/img/${imageName[i]}.png", i == 0 ? true : false);
       }
