@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
 import 'package:promad_sora/routes/page_route.dart';
@@ -89,18 +88,20 @@ class _HomeState extends State<Home> {
       },
       child: Scaffold(
         backgroundColor: backgroundColor,
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(children: [
-              promadHeader(),
-              descriptionText(),
-              promptTextField(),
-              selectStyleSection(context),
-              selectVideoStyleSlider(),
-              videoSizeText(),
-              selectVideoSizeSlider(),
-              createButton(context),
-            ]),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Center(
+              child: Column(children: [
+                promadHeader(),
+                descriptionText(),
+                promptTextField(),
+                selectStyleSection(context),
+                selectVideoStyleSlider(),
+                videoSizeText(),
+                selectVideoSizeSlider(),
+                createButton(context),
+              ]),
+            ),
           ),
         ),
       ),

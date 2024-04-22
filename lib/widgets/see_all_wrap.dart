@@ -30,20 +30,14 @@ class _SeeAllStyleWrapState extends State<SeeAllStyleWrap> {
 
     for (var i = 0; i < selectVideoStyleModel.length; i++) {
       bool isSelected = selectVideoStyleModel[i].isSelected;
-
       results.add(GestureDetector(
         onTap: () {
-          for (int j = 0; j < selectVideoStyleModel.length; j++) {
-            if (i == j) {
-              setState(() {
-                selectVideoStyleModel[j].isSelected = true;
-              });
-            } else {
-              setState(() {
-                selectVideoStyleModel[j].isSelected = false;
-              });
+          setState(() {
+            styleProvider.setSelectIndex(i);
+            for (int j = 0; j < selectVideoStyleModel.length; j++) {
+              selectVideoStyleModel[j].isSelected = i == j;
             }
-          }
+          });
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

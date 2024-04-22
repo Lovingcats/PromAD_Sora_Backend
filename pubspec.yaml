@@ -32,22 +32,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/img/cat1.jpeg
-    - assets/img/cat2.jpeg
-    - assets/img/cat3.jpeg
-    - assets/img/cat4.jpeg
-    - assets/img/cat5.jpeg
-    - assets/img/cat6.jpeg
-    - assets/img/cat7.jpeg
-    - assets/img/cat8.jpeg
-    - assets/img/facebook.png
-    - assets/img/google.png
-    - assets/img/twitter.png
-    - assets/img/loginbackground.jpeg
-    - assets/img/tool1.png
-    - assets/lottie/loading.json
-    - assets/lottie/loading2.json
-    - assets/lottie/loading3.json
+    - assets/img/
+    - assets/lottie/
 
   fonts:
     - family: Nexa_Regular

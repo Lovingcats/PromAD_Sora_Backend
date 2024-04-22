@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
+import 'package:promad_sora/provider/style_provider.dart';
+import 'package:promad_sora/routes/page_route.dart';
+import 'package:promad_sora/screen/bottom/home/home.dart';
 import 'package:promad_sora/widgets/see_all_wrap.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class SeeAllStyle extends StatefulWidget {
@@ -88,6 +92,8 @@ class _SeeAllStyleState extends State<SeeAllStyle> {
   }
 
   Padding seeAllStyleAppbar(BuildContext context) {
+  
+    var styleProvider = Provider.of<StyleProvider>(context);
     return Padding(
       padding: EdgeInsets.only(top: 20.h, left: 25.w, right: 25.w),
       child: Row(
@@ -95,6 +101,7 @@ class _SeeAllStyleState extends State<SeeAllStyle> {
         children: [
           GestureDetector(
             onTap: () {
+              styleProvider.changeIsSelected(); //초기화
               Navigator.pop(context);
             },
             child: Text(
@@ -110,14 +117,22 @@ class _SeeAllStyleState extends State<SeeAllStyle> {
             style: TextStyle(
                 fontSize: 17.sp, color: Colors.white, fontFamily: "Nexa_Bold"),
           ),
-          GradientText(
-            'Done',
-            style: TextStyle(fontSize: 17.sp, fontFamily: "Nexa_Regular"),
-            colors: const [
-              Color.fromARGB(255, 186, 255, 217),
-              Color.fromARGB(255, 150, 255, 255),
-              Color(0xFF00FFFF),
-            ],
+          GestureDetector(
+            onTap: (){
+              Navigator.push(
+                context,
+                CustomPageRoute(child: const Home()),
+              );
+            },
+            child: GradientText(
+              'Done',
+              style: TextStyle(fontSize: 17.sp, fontFamily: "Nexa_Regular"),
+              colors: const [
+                Color.fromARGB(255, 186, 255, 217),
+                Color.fromARGB(255, 150, 255, 255),
+                Color(0xFF00FFFF),
+              ],
+            ),
           ),
         ],
       ),
