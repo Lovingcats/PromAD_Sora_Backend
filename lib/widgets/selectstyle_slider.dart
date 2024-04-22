@@ -18,14 +18,21 @@ class _SelectVideoStyleSliderState extends State<SelectVideoStyleSlider> {
     print("실행");
     WidgetsBinding.instance.addPostFrameCallback((_) {
       List<String> styleName = [
-        "Cat1",
-        "Cat2",
-        "Cat3",
-        "Cat4",
-        "Cat5",
-        "Cat6",
-        "Cat7",
-        "Cat8"
+        "Cute",
+        "Pretty",
+        "Beautiful",
+        "2d Anime",
+        "Fashion",
+        "Fantasy",
+        "3d Anime",
+        "Sketch",
+        "Makoto Shinkai",
+        "Pixel Art",
+        "Minecraft",
+        "Neon",
+        "Comic Book",
+        "Painting",
+        "illustration",
       ];
       var styleProvider = Provider.of<StyleProvider>(context, listen: false);
       for (int i = 0; i < 8; i++) {
