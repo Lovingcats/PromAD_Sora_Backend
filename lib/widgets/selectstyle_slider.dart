@@ -54,7 +54,7 @@ class _SelectVideoStyleSliderState extends State<SelectVideoStyleSlider> {
       var styleProvider = Provider.of<StyleProvider>(context, listen: false);
       for (int i = 0; i < 8; i++) {
         styleProvider.addList(
-            styleName[i], "assets/img/${imageName[i]}.jpeg", i == 0 ? true : false);
+            styleName[i], "assets/img/${imageName[i]}.png", i == 0 ? true : false);
       }
     });
 
