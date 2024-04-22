@@ -32,7 +32,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
+    - assets/img/
+    - assets/lottie/
 
   fonts:
     - family: Nexa_Regular
