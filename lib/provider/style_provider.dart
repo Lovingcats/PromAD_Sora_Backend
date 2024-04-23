@@ -10,19 +10,19 @@ class StyleProvider extends ChangeNotifier {
   List<SelectVideoStyleModel> get selectVideoStyleModel =>
       _selectVideoStyleModel;
   int get modelSelectIndex => _modelSelectIndex; //새롭게 선택된
-  int get modelSelectedIndex => _modelSelectedIndex; //선택되어있던 
+  int get modelSelectedIndex => _modelSelectedIndex; //선택되어있던
 
-  void setSelectedIndex(int index){
+  void setSelectedIndex(int index) {
     _modelSelectedIndex = index;
     notifyListeners();
   }
 
-  void setSelectIndex(int index){
+  void setSelectIndex(int index) {
     _modelSelectIndex = index;
     notifyListeners();
   }
-  
-  void changeIsSelected(){
+
+  void changeIsSelected() {
     selectVideoStyleModel[modelSelectedIndex].isSelected = true;
     selectVideoStyleModel[modelSelectIndex].isSelected = false;
     notifyListeners();
