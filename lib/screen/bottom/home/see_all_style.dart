@@ -92,7 +92,6 @@ class _SeeAllStyleState extends State<SeeAllStyle> {
   }
 
   Padding seeAllStyleAppbar(BuildContext context) {
-  
     var styleProvider = Provider.of<StyleProvider>(context);
     return Padding(
       padding: EdgeInsets.only(top: 20.h, left: 25.w, right: 25.w),
@@ -101,7 +100,7 @@ class _SeeAllStyleState extends State<SeeAllStyle> {
         children: [
           GestureDetector(
             onTap: () {
-              styleProvider.changeIsSelected(); //초기화
+              styleProvider.changeIsSelected();
               Navigator.pop(context);
             },
             child: Text(
@@ -118,7 +117,7 @@ class _SeeAllStyleState extends State<SeeAllStyle> {
                 fontSize: 17.sp, color: Colors.white, fontFamily: "Nexa_Bold"),
           ),
           GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.push(
                 context,
                 CustomPageRoute(child: const Home()),
