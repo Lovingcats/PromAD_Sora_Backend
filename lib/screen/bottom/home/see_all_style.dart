@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
 import 'package:promad_sora/provider/style_provider.dart';
 import 'package:promad_sora/routes/page_route.dart';
+import 'package:promad_sora/screen/bottom/bottom.dart';
 import 'package:promad_sora/screen/bottom/home/home.dart';
 import 'package:promad_sora/widgets/see_all_wrap.dart';
 import 'package:provider/provider.dart';
@@ -120,7 +121,7 @@ class _SeeAllStyleState extends State<SeeAllStyle> {
             onTap: () {
               Navigator.push(
                 context,
-                CustomPageRoute(child: const Home()),
+                CustomPageRoute(child: const Bottom()),
               );
             },
             child: GradientText(
