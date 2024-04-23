@@ -121,6 +121,13 @@ class _LoadingAnimationState extends State<LoadingAnimation>
   late Timer _timer;
 
   @override
+  void dispose() {
+    _timer.cancel();
+    _animationController?.dispose();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     super.initState();
     _animationController = AnimationController(
@@ -135,13 +142,6 @@ class _LoadingAnimationState extends State<LoadingAnimation>
         }
       });
     });
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    _animationController?.dispose();
-    super.dispose();
   }
 
   @override
