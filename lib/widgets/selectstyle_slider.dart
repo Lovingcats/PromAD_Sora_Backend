@@ -52,13 +52,12 @@ class _SelectVideoStyleSliderState extends State<SelectVideoStyleSlider> {
         "sketch",
       ];
       var styleProvider = Provider.of<StyleProvider>(context, listen: false);
-      if(styleProvider.selectVideoStyleModel.isEmpty){
+      if (styleProvider.selectVideoStyleModel.isEmpty) {
         for (int i = 0; i < imageName.length; i++) {
-          styleProvider.addList(
-              styleName[i], "assets/img/${imageName[i]}.png", i == 0 ? true : false);
+          styleProvider.addList(styleName[i], "assets/img/${imageName[i]}.png",
+              i == 0 ? true : false);
         }
       }
-      
     });
 
     super.initState();
@@ -90,6 +89,7 @@ class _SelectVideoStyleSliderState extends State<SelectVideoStyleSlider> {
             for (int j = 0; j < selectVideoStyleModel.length; j++) {
               if (i == j) {
                 setState(() {
+                  styleProvider.setSelectedIndex(j);
                   selectVideoStyleModel[j].isSelected = true;
                 });
               } else {
