@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
 import 'package:promad_sora/routes/page_route.dart';
 import 'package:promad_sora/screen/loading.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -107,6 +108,39 @@ Widget loginButtons(context) {
 }
 
 List<Widget> makeLoginButtons(context) {
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+      'openid', // 인증 코드 요청 시 필요한 스코프입니다.
+    ],
+  );
+
+  Future<void> googleSignIn() async {
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+
+      if (googleUser != null) {
+        final GoogleSignInAuthentication googleAuth =
+            await googleUser.authentication;
+        final String? authCode = googleAuth.accessToken;
+        for (int i = 0; i < 10; i++) {
+          print("AuthCode : $authCode");
+        }
+
+        if (authCode != null) {
+          print("$authCode");
+        } else {
+          print("구글에서 인증 코드를 제공하지 않았습니다. 다시 시도해주세요.");
+        }
+      } else {
+        // 사용자가 로그인 인증 과정에서 취소한 경우
+        print("사용자가 구글 계정에 로그인 인증을 거치지 않았습니다. 다시 시도해주세요.");
+      }
+    } catch (error) {
+      print(error);
+    }
+  }
+
   List<String> buttonsUrl = [
     "assets/img/google.png",
     "assets/img/facebook.png",
@@ -118,11 +152,12 @@ List<Widget> makeLoginButtons(context) {
     results.add(Padding(
       padding: EdgeInsets.only(bottom: i == 1 ? 20.h : 15.h),
       child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            CustomPageRoute(child: const Loading()),
-          );
+        onTap: () async {
+          await googleSignIn();
+          // Navigator.push(
+          //   context,
+          //   CustomPageRoute(child: const Loading()),
+          // );
         },
         child: Image.asset(
           buttonsUrl[i],
