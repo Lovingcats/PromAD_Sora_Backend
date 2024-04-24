@@ -21,6 +21,7 @@ dependencies:
   flutter_facebook_auth: ^6.1.1
   lottie: ^3.1.0
   dropdown_button2: ^2.3.9
+  google_sign_in: ^6.2.1
 
 dev_dependencies:
   flutter_test:
