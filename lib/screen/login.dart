@@ -129,6 +129,10 @@ List<Widget> makeLoginButtons(context) {
 
         if (authCode != null) {
           print("$authCode");
+          Navigator.push(
+            context,
+            CustomPageRoute(child: const Loading()),
+          );
         } else {
           print("구글에서 인증 코드를 제공하지 않았습니다. 다시 시도해주세요.");
         }
@@ -154,10 +158,6 @@ List<Widget> makeLoginButtons(context) {
       child: GestureDetector(
         onTap: () async {
           await googleSignIn();
-          // Navigator.push(
-          //   context,
-          //   CustomPageRoute(child: const Loading()),
-          // );
         },
         child: Image.asset(
           buttonsUrl[i],
