@@ -123,12 +123,8 @@ List<Widget> makeLoginButtons(context) {
         final GoogleSignInAuthentication googleAuth =
             await googleUser.authentication;
         final String? authCode = googleAuth.accessToken;
-        for (int i = 0; i < 10; i++) {
-          print("AuthCode : $authCode");
-        }
 
         if (authCode != null) {
-          print("$authCode");
           Navigator.push(
             context,
             CustomPageRoute(child: const Loading()),
