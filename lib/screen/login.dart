@@ -116,6 +116,32 @@ List<Widget> makeLoginButtons(context) {
     ],
   );
 
+  void showLoadingIndicator() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const Dialog(
+          backgroundColor: Colors.transparent,
+          child: SizedBox(
+            height: 100,
+            width: 100,
+            child: Center(
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void hideLoadingIndicator() {
+    Navigator.of(context).pop();
+  }
+
   Future<void> googleSignIn() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
@@ -126,6 +152,9 @@ List<Widget> makeLoginButtons(context) {
         final String? authCode = googleAuth.accessToken;
 
         if (authCode != null) {
+          showLoadingIndicator();
+          await Future.delayed(const Duration(milliseconds: 1000));
+          hideLoadingIndicator();
           Navigator.push(
             context,
             CustomPageRoute(child: const Loading()),
