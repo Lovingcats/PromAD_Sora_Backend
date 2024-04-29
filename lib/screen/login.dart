@@ -121,8 +121,18 @@ List<Widget> makeLoginButtons(context) {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return AlertDialog(
-          content: CircularProgressIndicator(),
+        return const Dialog(
+          backgroundColor: Colors.transparent,
+          child: SizedBox(
+            height: 100,
+            width: 100,
+            child: Center(
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              ),
+            ),
+          ),
         );
       },
     );
