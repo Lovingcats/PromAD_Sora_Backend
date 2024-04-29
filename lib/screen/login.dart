@@ -152,6 +152,9 @@ List<Widget> makeLoginButtons(context) {
         final String? authCode = googleAuth.accessToken;
 
         if (authCode != null) {
+          showLoadingIndicator();
+          await Future.delayed(const Duration(milliseconds: 1000));
+          hideLoadingIndicator();
           Navigator.push(
             context,
             CustomPageRoute(child: const Loading()),
