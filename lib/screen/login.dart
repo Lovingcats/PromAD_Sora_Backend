@@ -116,6 +116,18 @@ List<Widget> makeLoginButtons(context) {
     ],
   );
 
+  void showLoadingIndicator() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: CircularProgressIndicator(),
+        );
+      },
+    );
+  }
+
   Future<void> googleSignIn() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
