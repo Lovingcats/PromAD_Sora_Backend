@@ -128,6 +128,10 @@ List<Widget> makeLoginButtons(context) {
     );
   }
 
+  void hideLoadingIndicator() {
+    Navigator.of(context).pop();
+  }
+
   Future<void> googleSignIn() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
