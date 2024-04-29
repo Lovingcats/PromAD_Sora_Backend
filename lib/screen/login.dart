@@ -4,6 +4,7 @@ import 'package:promad_sora/common/common.dart';
 import 'package:promad_sora/routes/page_route.dart';
 import 'package:promad_sora/screen/loading.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:promad_sora/util/toast_message.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -130,14 +131,14 @@ List<Widget> makeLoginButtons(context) {
             CustomPageRoute(child: const Loading()),
           );
         } else {
-          print("구글에서 인증 코드를 제공하지 않았습니다. 다시 시도해주세요.");
+          showToastMessage(
+              "Google didn't provide a verification code. Please retry");
         }
       } else {
-        // 사용자가 로그인 인증 과정에서 취소한 경우
-        print("사용자가 구글 계정에 로그인 인증을 거치지 않았습니다. 다시 시도해주세요.");
+        showToastMessage("Please try again.");
       }
     } catch (error) {
-      print(error);
+      showToastMessage("A minor error occurred. Please try again later.");
     }
   }
 
