@@ -5,6 +5,7 @@ import 'package:promad_sora/routes/page_route.dart';
 import 'package:promad_sora/screen/loading.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:promad_sora/util/toast_message.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -142,6 +143,20 @@ List<Widget> makeLoginButtons(context) {
     Navigator.of(context).pop();
   }
 
+  Future<void> facebookSignIn() async {
+    final LoginResult result = await FacebookAuth.instance.login();
+    if (result.status == LoginStatus.success) {
+      final AccessToken accessToken = result.accessToken!;
+      Navigator.push(
+        context,
+        CustomPageRoute(child: const Loading()),
+      );
+    } else {
+      print(result.status);
+      print(result.message);
+    }
+  }
+
   Future<void> googleSignIn() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
@@ -183,7 +198,11 @@ List<Widget> makeLoginButtons(context) {
       padding: EdgeInsets.only(bottom: i == 1 ? 20.h : 15.h),
       child: GestureDetector(
         onTap: () async {
-          await googleSignIn();
+          if (i == 0) {
+            await googleSignIn();
+          } else if (i == 1) {
+            await facebookSignIn();
+          } else {}
         },
         child: Image.asset(
           buttonsUrl[i],
