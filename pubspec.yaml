@@ -23,6 +23,7 @@ dependencies:
   dropdown_button2: ^2.3.9
   google_sign_in: ^6.2.1
   fluttertoast: ^8.2.5
+  twitter_login: ^4.4.2
 
 dev_dependencies:
   flutter_test:
