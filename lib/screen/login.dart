@@ -151,7 +151,7 @@ List<Widget> makeLoginButtons(context) {
       apiSecretKey: twitterSecretApiKey,
       redirectURI: redirectUrl,
     );
-    final authResult = await twitterLogin.login();
+    final authResult = await twitterLogin.loginV2();
     switch (authResult.status) {
       case TwitterLoginStatus.loggedIn:
         Navigator.push(
