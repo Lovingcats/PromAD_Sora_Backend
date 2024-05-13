@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
+import 'package:promad_sora/common/secretkey.dart';
 import 'package:promad_sora/routes/page_route.dart';
 import 'package:promad_sora/screen/loading.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:promad_sora/util/toast_message.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:twitter_login/twitter_login.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -143,6 +145,30 @@ List<Widget> makeLoginButtons(context) {
     Navigator.of(context).pop();
   }
 
+  Future<void> twitterSignIn() async {
+    final twitterLogin = TwitterLogin(
+      apiKey: twitterApiKey,
+      apiSecretKey: twitterSecretApiKey,
+      redirectURI: redirectUrl,
+    );
+    final authResult = await twitterLogin.loginV2();
+    switch (authResult.status) {
+      case TwitterLoginStatus.loggedIn:
+        Navigator.push(
+          context,
+          CustomPageRoute(child: const Loading()),
+        );
+        break;
+      case TwitterLoginStatus.cancelledByUser:
+        print("유저 취소");
+        break;
+      case TwitterLoginStatus.error:
+        print("에러 발생");
+      case null:
+        break;
+    }
+  }
+
   Future<void> facebookSignIn() async {
     final LoginResult result = await FacebookAuth.instance.login();
     if (result.status == LoginStatus.success) {
@@ -202,7 +228,9 @@ List<Widget> makeLoginButtons(context) {
             await googleSignIn();
           } else if (i == 1) {
             await facebookSignIn();
-          } else {}
+          } else {
+            await twitterSignIn();
+          }
         },
         child: Image.asset(
           buttonsUrl[i],
