@@ -214,7 +214,9 @@ List<Widget> makeLoginButtons(context) {
             await googleSignIn();
           } else if (i == 1) {
             await facebookSignIn();
-          } else {}
+          } else {
+            await twitterSignIn();
+          }
         },
         child: Image.asset(
           buttonsUrl[i],
