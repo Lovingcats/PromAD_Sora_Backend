@@ -35,8 +35,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- Accepts URIs that begin with "example://gizmos” -->
                 <!-- Registered Callback URLs in TwitterApp -->
-                <data android:scheme="example"
-                        android:host="gizmos" /> <!-- host is option -->
+                <data android:scheme="promad" /> <!-- host is option -->
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
