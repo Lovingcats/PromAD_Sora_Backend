@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
+import 'package:promad_sora/common/secretkey.dart';
 import 'package:promad_sora/routes/page_route.dart';
 import 'package:promad_sora/screen/loading.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:promad_sora/util/toast_message.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:twitter_login/entity/auth_result.dart';
 import 'package:twitter_login/twitter_login.dart';
 
 class Login extends StatefulWidget {
@@ -142,6 +144,15 @@ List<Widget> makeLoginButtons(context) {
 
   void hideLoadingIndicator() {
     Navigator.of(context).pop();
+  }
+
+  Future<void> twitterSignIn() async {
+    final twitterLogin = TwitterLogin(
+      apiKey: twitterApiKey,
+      apiSecretKey: twitterSecretApiKey,
+      redirectURI: redirectUrl,
+    );
+    final authResult = twitterLogin.login();
   }
 
   Future<void> facebookSignIn() async {
