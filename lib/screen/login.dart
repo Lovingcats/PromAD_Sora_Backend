@@ -151,7 +151,22 @@ List<Widget> makeLoginButtons(context) {
       apiSecretKey: twitterSecretApiKey,
       redirectURI: redirectUrl,
     );
-    final authResult = twitterLogin.login();
+    final authResult = await twitterLogin.login();
+    switch (authResult.status) {
+      case TwitterLoginStatus.loggedIn:
+        Navigator.push(
+          context,
+          CustomPageRoute(child: const Loading()),
+        );
+        break;
+      case TwitterLoginStatus.cancelledByUser:
+        print("유저 취소");
+        break;
+      case TwitterLoginStatus.error:
+        print("에러 발생");
+      case null:
+        break;
+    }
   }
 
   Future<void> facebookSignIn() async {
