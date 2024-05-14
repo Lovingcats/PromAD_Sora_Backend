@@ -163,7 +163,7 @@ List<Widget> makeLoginButtons(context) {
         showToastMessage("Please try again.");
         break;
       case TwitterLoginStatus.error:
-        print("에러 발생");
+        showToastMessage("A minor error occurred. Please try again later.");
       case null:
         break;
     }
