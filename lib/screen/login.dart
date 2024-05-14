@@ -160,7 +160,7 @@ List<Widget> makeLoginButtons(context) {
         );
         break;
       case TwitterLoginStatus.cancelledByUser:
-        print("유저 취소");
+        showToastMessage("Please try again.");
         break;
       case TwitterLoginStatus.error:
         print("에러 발생");
