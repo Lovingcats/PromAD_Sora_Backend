@@ -178,8 +178,7 @@ List<Widget> makeLoginButtons(context) {
         CustomPageRoute(child: const Loading()),
       );
     } else {
-      print(result.status);
-      print(result.message);
+      showToastMessage("A minor error occurred. Please try again later.");
     }
   }
 
