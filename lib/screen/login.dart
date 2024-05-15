@@ -177,7 +177,9 @@ List<Widget> makeLoginButtons(context) {
         context,
         CustomPageRoute(child: const Loading()),
       );
-    } else {}
+    } else {
+      showToastMessage("A minor error occurred. Please try again later.");
+    }
   }
 
   Future<void> googleSignIn() async {
