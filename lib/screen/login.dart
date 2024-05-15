@@ -177,10 +177,7 @@ List<Widget> makeLoginButtons(context) {
         context,
         CustomPageRoute(child: const Loading()),
       );
-    } else {
-      print(result.status);
-      print(result.message);
-    }
+    } else {}
   }
 
   Future<void> googleSignIn() async {
