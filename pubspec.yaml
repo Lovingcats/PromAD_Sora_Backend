@@ -24,6 +24,7 @@ dependencies:
   google_sign_in: ^6.2.1
   fluttertoast: ^8.2.5
   twitter_login: ^4.4.2
+  flutter_stripe: ^10.1.1
 
 dev_dependencies:
   flutter_test:
