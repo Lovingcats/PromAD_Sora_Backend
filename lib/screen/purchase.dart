@@ -20,15 +20,7 @@ class PurChase extends StatefulWidget {
 class _PurChaseState extends State<PurChase> {
   final List<String> payItems = ['5', '10', '30', '50', '100', '300'];
 
-  final List<String> prices = [
-    '0.00',
-    '5.50',
-    '11.00',
-    '33.50',
-    '57.40',
-    '117.00',
-    '350.00'
-  ];
+  final List<String> prices = ['0.00', '5', '11', '33', '570', '1170', '350'];
 
   String? selectedValue;
 
@@ -60,9 +52,9 @@ class _PurChaseState extends State<PurChase> {
   }
 
   //client_secret을 불러오고 화면에 stripe결제 실행
-  Future<void> makePayment(BuildContext context, String usd) async {
+  Future<void> makePayment(BuildContext context, String amount) async {
     try {
-      var paymentIntentData = await createPaymentIntent(usd, "USD") ?? {};
+      var paymentIntentData = await createPaymentIntent(amount, "USD");
 
       await Stripe.instance
           .initPaymentSheet(
@@ -255,7 +247,9 @@ class _PurChaseState extends State<PurChase> {
                 Padding(
                   padding: EdgeInsets.only(top: 10.h),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      makePayment(context, prices[selectIndex]);
+                    },
                     child: Container(
                       width: double.infinity,
                       height: 45.h,
@@ -273,7 +267,7 @@ class _PurChaseState extends State<PurChase> {
                       ),
                       alignment: Alignment.center,
                       child: Text(
-                        "Pay \$${prices[selectIndex]}",
+                        "Pay \$${prices[selectIndex]}.00",
                         style: TextStyle(
                             fontSize: 16.sp,
                             color: const Color.fromARGB(255, 70, 70, 70),
