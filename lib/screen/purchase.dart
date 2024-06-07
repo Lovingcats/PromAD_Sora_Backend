@@ -30,7 +30,7 @@ class _PurChaseState extends State<PurChase> {
   dynamic createPaymentIntent(String amount, String currency) async {
     try {
       Map<String, dynamic> body = {
-        'amount': amount,
+        'amount': "${amount}00",
         'currency': currency,
       };
 
