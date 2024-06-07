@@ -7,7 +7,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:promad_sora/common/common.dart';
 import 'package:promad_sora/common/secretkey.dart';
-import 'package:promad_sora/routes/page_route.dart';
 import 'package:http/http.dart' as http;
 import 'package:promad_sora/util/toast_message.dart';
 
