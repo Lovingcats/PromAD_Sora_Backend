@@ -20,7 +20,7 @@ class PurChase extends StatefulWidget {
 class _PurChaseState extends State<PurChase> {
   final List<String> payItems = ['5', '10', '30', '50', '100', '300'];
 
-  final List<String> prices = ['0', '5', '11', '33', '570', '117', '350'];
+  final List<String> prices = ['0', '5', '11', '33', '57', '117', '350'];
 
   String? selectedValue;
 
