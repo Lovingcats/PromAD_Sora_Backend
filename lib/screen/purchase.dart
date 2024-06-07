@@ -20,7 +20,7 @@ class PurChase extends StatefulWidget {
 class _PurChaseState extends State<PurChase> {
   final List<String> payItems = ['5', '10', '30', '50', '100', '300'];
 
-  final List<String> prices = ['0.00', '5', '11', '33', '570', '1170', '350'];
+  final List<String> prices = ['0', '5', '11', '33', '570', '117', '350'];
 
   String? selectedValue;
 
@@ -236,7 +236,7 @@ class _PurChaseState extends State<PurChase> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Price: \$${prices[selectIndex]}",
+                      "Price: \$${prices[selectIndex]}.00",
                       style: TextStyle(
                         fontSize: 16.sp,
                         color: Colors.white,
