@@ -7,8 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:promad_sora/common/common.dart';
 import 'package:promad_sora/common/secretkey.dart';
-import 'package:promad_sora/routes/page_route.dart';
 import 'package:http/http.dart' as http;
+import 'package:promad_sora/util/toast_message.dart';
 
 class PurChase extends StatefulWidget {
   const PurChase({super.key});
@@ -20,7 +20,7 @@ class PurChase extends StatefulWidget {
 class _PurChaseState extends State<PurChase> {
   final List<String> payItems = ['5', '10', '30', '50', '100', '300'];
 
-  final List<String> prices = ['0', '5', '11', '33', '570', '117', '350'];
+  final List<String> prices = ['0', '5', '11', '33', '57', '117', '350'];
 
   String? selectedValue;
 
@@ -30,7 +30,7 @@ class _PurChaseState extends State<PurChase> {
   dynamic createPaymentIntent(String amount, String currency) async {
     try {
       Map<String, dynamic> body = {
-        'amount': amount,
+        'amount': "${amount}00",
         'currency': currency,
       };
 
@@ -76,8 +76,7 @@ class _PurChaseState extends State<PurChase> {
   void displayPaymentSheet(BuildContext context) async {
     try {
       await Stripe.instance.presentPaymentSheet().then((value) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text("결제가 성공적으로 진행되셨습니다!")));
+        showToastMessage("Your payment has been successfully completed!");
       }).onError((error, stackTrace) {
         throw Exception(error);
       });
