@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:promad_sora/common/common.dart';
+import 'package:promad_sora/common/secretkey.dart';
 import 'package:promad_sora/routes/page_route.dart';
 import 'package:http/http.dart' as http;
 
@@ -28,6 +32,31 @@ class _PurChaseState extends State<PurChase> {
   String? selectedValue;
 
   int selectIndex = 0;
+
+  //amount는 돈의 양, currency는 화폐종류 ex) USD, KRW
+  dynamic createPaymentIntent(String amount, String currency) async {
+    try {
+      Map<String, dynamic> body = {
+        'amount': amount,
+        'currency': currency,
+      };
+
+      var response = await http.post(
+        Uri.parse('https://api.stripe.com/v1/payment_intents'),
+        headers: {
+          'Authorization': 'Bearer $stripeSecretKey',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: body,
+      );
+      return jsonDecode(response.body);
+    } catch (err) {
+      if (kDebugMode) {
+        print("1 : 에러가 발생했습니다!");
+        print(err);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
