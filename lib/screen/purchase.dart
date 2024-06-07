@@ -75,10 +75,9 @@ class _PurChaseState extends State<PurChase> {
   //결제 성공시 snackbar 실행
   void displayPaymentSheet(BuildContext context) async {
     try {
-      await Stripe.instance
-          .presentPaymentSheet()
-          .then((value) {})
-          .onError((error, stackTrace) {
+      await Stripe.instance.presentPaymentSheet().then((value) {
+        showToastMessage("Your payment has been successfully completed!");
+      }).onError((error, stackTrace) {
         throw Exception(error);
       });
     } on StripeException catch (e) {
