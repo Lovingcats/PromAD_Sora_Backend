@@ -60,9 +60,9 @@ class _PurChaseState extends State<PurChase> {
   }
 
   //client_secret을 불러오고 화면에 stripe결제 실행
-  Future<void> makePayment(BuildContext context) async {
+  Future<void> makePayment(BuildContext context, String usd) async {
     try {
-      var paymentIntentData = await createPaymentIntent("100", "USD") ?? {};
+      var paymentIntentData = await createPaymentIntent(usd, "USD") ?? {};
 
       await Stripe.instance
           .initPaymentSheet(
