@@ -4,6 +4,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:promad_sora/common/common.dart';
 import 'package:promad_sora/common/secretkey.dart';
 import 'package:promad_sora/routes/page_route.dart';
@@ -53,6 +54,27 @@ class _PurChaseState extends State<PurChase> {
     } catch (err) {
       if (kDebugMode) {
         print("1 : 에러가 발생했습니다!");
+        print(err);
+      }
+    }
+  }
+
+  //client_secret을 불러오고 화면에 stripe결제 실행
+  Future<void> makePayment(BuildContext context) async {
+    try {
+      var paymentIntentData = await createPaymentIntent("100", "USD") ?? {};
+
+      await Stripe.instance
+          .initPaymentSheet(
+              paymentSheetParameters: SetupPaymentSheetParameters(
+                  paymentIntentClientSecret: paymentIntentData['client_secret'],
+                  style: ThemeMode.light,
+                  customFlow: false,
+                  merchantDisplayName: 'test App'))
+          .then((value) => displayPaymentSheet(context));
+    } catch (err) {
+      if (kDebugMode) {
+        print("2 : 에러가 발생했습니다!");
         print(err);
       }
     }
