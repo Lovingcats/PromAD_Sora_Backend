@@ -9,6 +9,7 @@ import 'package:promad_sora/common/common.dart';
 import 'package:promad_sora/common/secretkey.dart';
 import 'package:promad_sora/routes/page_route.dart';
 import 'package:http/http.dart' as http;
+import 'package:promad_sora/util/toast_message.dart';
 
 class PurChase extends StatefulWidget {
   const PurChase({super.key});
@@ -75,10 +76,10 @@ class _PurChaseState extends State<PurChase> {
   //결제 성공시 snackbar 실행
   void displayPaymentSheet(BuildContext context) async {
     try {
-      await Stripe.instance.presentPaymentSheet().then((value) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text("결제가 성공적으로 진행되셨습니다!")));
-      }).onError((error, stackTrace) {
+      await Stripe.instance
+          .presentPaymentSheet()
+          .then((value) {})
+          .onError((error, stackTrace) {
         throw Exception(error);
       });
     } on StripeException catch (e) {
